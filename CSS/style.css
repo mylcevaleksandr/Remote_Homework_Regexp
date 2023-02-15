@@ -1,0 +1,189 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+@font-face {
+    font-family: "Nunito-bold";
+    src: url("../Fonts/Nunito-Bold.ttf");
+    font-style: normal;
+}
+
+body {
+    font-family: "Nunito-bold", sans-serif;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header-container {
+    text-align: center;
+    padding-top: 27px;
+    padding-bottom: 56px;
+}
+
+.logo-img {
+    width: 262px;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 56px;
+}
+
+.main__h1 {
+    margin-bottom: 20px;
+    font-size: 36px;
+    color: #000000;
+}
+
+.main__h3 {
+    font-size: 22px;
+    color: #636363;
+}
+
+.main__form-wrapper {
+    max-width: 452px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main__form {
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main__form label {
+    font-size: 16px;
+    color: #C6C6C4;
+}
+
+.main__form input {
+    font-size: 20px;
+    font-weight: 600;
+    color: #323232;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border: 0;
+    border-bottom: 1px solid #C6C6C4;
+    outline: deeppink;
+}
+
+.main__form label:last-child {
+    font-size: 16px;
+    color: #636363;
+    margin-left: 10px;
+}
+
+.main__btn {
+    margin-top: 40px;
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 210px;
+    height: 70px;
+    background: #DD3142;
+    border-radius: 40px;
+    border: none;
+    align-self: center;
+    cursor: pointer;
+}
+
+.main__p {
+    margin-top: 44px;
+    text-align: center;
+    font-size: 16px;
+    color: #636363;
+
+}
+
+.half-one {
+    position: absolute;
+    background-color: #E5E5E5;
+    width: 50%;
+    top: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.half-two {
+    position: absolute;
+    background-color: #F8F8FA;
+    width: 50%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+}
+
+.popup-wrapper {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.form_popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 35px;
+    padding: 35px;
+    border: 1px solid #DD3142;
+    border-radius: 20px;
+    bottom: 0;
+    background: #FFFFFF;
+
+}
+
+.popup-btn {
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 210px;
+    height: 70px;
+    background: #DD3142;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+}
+
+.popup-article {
+    font-size: 16px;
+    color: #636363;
+}

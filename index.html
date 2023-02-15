@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Aleksandr Myltsev">
+    <title>HW_DOM</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script async src="JS/script.js"></script>
+</head>
+<body>
+<div class="half-one"></div>
+<div class="half-two"></div>
+
+<section class="container header-container">
+    <img src="images/homeWorks.png" alt="logo" class="logo-img">
+</section>
+<section class="container main">
+    <div class="main__form-wrapper">
+        <h1 class="main__h1">Get your free account</h1>
+        <h3 class="main__h3">Try homeWorks BUSINESS free for 15 days. Downgrade to Basic (Free Forever) anytime.</h3>
+        <form action="" id="main__form" class="main__form">
+            <label for="full-name">Full Name</label>
+            <input type="text" name="full-name" id="full-name">
+            <label for="user-name">Your username</label>
+            <input type="text" name="user-name" id="user-name">
+            <label for="email">E-mail</label>
+            <input type="email" name="email" id="email">
+            <label for="password-1">Password</label>
+            <input type="password" name="password-1" id="password-1">
+            <label for="password-2">Repeat Password</label>
+            <input type="password" name="password-2" id="password-2">
+            <div class="checkbox-wrapper">
+                <input type="checkbox" name="agree" id="agree">
+                <label class="agree" for="agree">Agree to our Terms of Service and Privacy Statement</label>
+            </div>
+            <button type="submit" class="main__btn">Sign Up</button>
+            <div class="popup-wrapper">
+                <div class="form_popup">
+                    <p class="popup-article">На вашу почту выслана ссылка, перейдите по ней, чтобы завершить
+                        регистрацию</p>
+                    <button type="reset" class="popup-btn" id="popup-submit">OK</button>
+                </div>
+            </div>
+        </form>
+        <p class="main__p">Already have an account?</p>
+    </div>
+    <div class="main__image">
+        <img src="images/rocket.png" alt="rocket image">
+    </div>
+</section>
+
+</body>
+</html>
