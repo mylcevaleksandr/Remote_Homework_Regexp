@@ -85,6 +85,7 @@ window.onload = () => {
             }
             else {
                 alert( "Добро пожаловать, " + form[1].value + "!" );
+                window.location.reload();
             }
         };
     }
