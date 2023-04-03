@@ -97,7 +97,7 @@ body {
     margin-bottom: 20px;
     border: 0;
     border-bottom: 1px solid #C6C6C4;
-    outline: deeppink;
+    outline: #43ff14;
 }
 
 .main__form label:last-child {
@@ -112,7 +112,7 @@ body {
     color: #FFFFFF;
     width: 210px;
     height: 70px;
-    background: #DD3142;
+    background: #72e367;
     border-radius: 40px;
     border: none;
     align-self: center;
@@ -129,7 +129,7 @@ body {
 
 .half-one {
     position: absolute;
-    background-color: #FFFFFB;;
+    background-color: #97f8f8;;
     width: 50%;
     top: 0;
     bottom: 0;
@@ -138,7 +138,7 @@ body {
 
 .half-two {
     position: absolute;
-    background-color: #F8F8FA;
+    background-color: #a3a3f7;
     width: 50%;
     top: 0;
     bottom: 0;
@@ -177,7 +177,7 @@ body {
     color: #FFFFFF;
     width: 210px;
     height: 70px;
-    background: #DD3142;
+    background: #a7f77d;
     border-radius: 40px;
     border: none;
     cursor: pointer;
