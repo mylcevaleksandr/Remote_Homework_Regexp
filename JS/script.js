@@ -107,6 +107,8 @@ window.onload = () => {
         welcome();
     }
 
+    console.log("Hello! This message comes from dev-2 branch!");
+
 };
    
  
