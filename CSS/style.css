@@ -168,7 +168,7 @@ body {
     border: 1px solid #DD3142;
     border-radius: 20px;
     bottom: 0;
-    background: #FFFFFF;
+    background: #8087d9;
 
 }
 
@@ -185,7 +185,7 @@ body {
 
 .popup-article {
     font-size: 16px;
-    color: #636363;
+    color: rgba(255, 114, 222, 0.75);
 }
 h4{
     color: yellow;
