@@ -174,7 +174,7 @@ body {
 
 .popup-btn {
     font-size: 20px;
-    color: #FFFFFF;
+    color: rgba(255, 114, 222, 0.75);
     width: 210px;
     height: 70px;
     background: #a7f77d;
