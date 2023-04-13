@@ -113,7 +113,6 @@ window.onload = () => {
 
     console.log( "This is a new message from first developer" );
 
-    console.log( "This is a new message from the second  developer in 2nd clone" );
 };
    
  
