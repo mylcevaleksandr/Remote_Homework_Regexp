@@ -86,7 +86,7 @@ body {
 
 .main__form label {
     font-size: 16px;
-    color: #f8396c;
+    color: #C6C6C4;
 }
 
 .main__form input {
@@ -96,8 +96,8 @@ body {
     margin-top: 5px;
     margin-bottom: 20px;
     border: 0;
-    border-bottom: 1px solid #f83b9a;
-    outline: #43ff14;
+    border-bottom: 1px solid #C6C6C4;
+    outline: none;
 }
 
 .main__form label:last-child {
@@ -109,10 +109,10 @@ body {
 .main__btn {
     margin-top: 40px;
     font-size: 20px;
-    color: rgba(255, 114, 222, 0.75);
+    color: #FFFFFF;
     width: 210px;
     height: 70px;
-    background: #72e367;
+    background: #DD3142;
     border-radius: 40px;
     border: none;
     align-self: center;
@@ -123,13 +123,13 @@ body {
     margin-top: 44px;
     text-align: center;
     font-size: 16px;
-    color: rgba(255, 114, 222, 0.75);
-
+    color: #636363;
+    cursor: pointer;
 }
 
 .half-one {
     position: absolute;
-    background-color: #97f8f8;;
+    background-color: #E5E5E5;
     width: 50%;
     top: 0;
     bottom: 0;
@@ -138,7 +138,7 @@ body {
 
 .half-two {
     position: absolute;
-    background-color: #a3a3f7;
+    background-color: #F8F8FA;
     width: 50%;
     top: 0;
     bottom: 0;
@@ -150,12 +150,12 @@ body {
     display: none;
     justify-content: center;
     align-items: center;
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    background: rgb(23, 9, 9);
+    background: rgba(23, 9, 9, 0.75);
 }
 
 .form_popup {
@@ -165,31 +165,33 @@ body {
     justify-content: center;
     row-gap: 35px;
     padding: 35px;
-    border: 1px solid #DD3142;
+    border: 2px solid #DD3142;
     border-radius: 20px;
     bottom: 0;
-    background: #8087d9;
+    background: #ffffff;
 
 }
 
 .popup-btn {
     font-size: 20px;
-    color: rgba(255, 114, 222, 0.75);
+    color: #ffffff;
     width: 210px;
     height: 70px;
-    background: #a7f77d;
+    background: #DD3142;
     border-radius: 40px;
     border: none;
     cursor: pointer;
 }
 
 .popup-article {
-    font-size: 16px;
-    color: rgba(255, 114, 222, 0.75);
+    font-size: 20px;
+    color: #636363;
 }
-h4{
+
+h4 {
     color: yellow;
 }
-h5{
+
+h5 {
     color: violet;
 }
