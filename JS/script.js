@@ -110,14 +110,7 @@ window.onload = () => {
         bodyBehindModal.style.overflow = "revert";
         welcome();
     }
-
-<<<<<<< HEAD
-    console.log("Hello! This message comes from dev-2 branch!");
-
-    console.log("Hello! This is a message from myTask branch ");
-
-=======
->>>>>>> f0a18a6574152dc810585c9a74977138c38e68c7
+    
 };
    
  
