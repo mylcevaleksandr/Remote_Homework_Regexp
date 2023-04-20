@@ -1,4 +1,6 @@
 window.onload = () => {
+    let bodyBehindModal = document.querySelector( "body" );
+
     let inputFull = document.getElementById( "full-name" );
 
     let inputUser = document.getElementById( "user-name" );
@@ -64,6 +66,7 @@ window.onload = () => {
         }
         else {
             modal.style.display = "flex";
+            bodyBehindModal.style.overflow = "hidden";
         }
     } );
 
@@ -104,13 +107,17 @@ window.onload = () => {
         signUpBtn.innerText = "Sign In";
         signUpBtn.type = "button";
         account.style.display = "none";
+        bodyBehindModal.style.overflow = "revert";
         welcome();
     }
 
+<<<<<<< HEAD
     console.log("Hello! This message comes from dev-2 branch!");
 
     console.log("Hello! This is a message from myTask branch ");
 
+=======
+>>>>>>> f0a18a6574152dc810585c9a74977138c38e68c7
 };
    
  
