@@ -46,7 +46,7 @@ window.onload = () => {
     form.addEventListener( "submit", function ( e ) {
         e.preventDefault();
         e.stopPropagation();
-        if ( e.target[0].value.length < 1 ) {
+        if ( !e.target[0].value ) {
             alert( "Заполните поле Full Name" );
         }
         else if ( e.target[1].value.length < 1 ) {
