@@ -1,13 +1,7 @@
 window.onload = () => {
     let bodyBehindModal = document.querySelector( "body" );
 
-    let inputFull = document.getElementById( "full-name" );
-
-    let inputUser = document.getElementById( "user-name" );
-
-    let checkBoxState = document.getElementById( "agree" );
-
-    let form = document.getElementById( "main__form" );
+    let formMain = document.getElementById( "main__form" );
 
     let labels = document.getElementsByTagName( "label" );
 
@@ -19,50 +13,53 @@ window.onload = () => {
 
     let signUpBtn = document.querySelector( ".main__btn" );
 
-    inputFull.onkeydown = ( e ) => {
-        if ( !isNaN( parseInt( e.key ) ) ) {
-            alert( "You may not enter numbers in this field!" );
-            return false;
-        }
+    let errorMsg = document.getElementsByClassName( "error-message" );
+
+    let inputStyles = {
+        "border-color": "red",
+        "border-width": "1px",
+        "border-style": "solid"
     };
+    
+    formMain.addEventListener( "submit", function ( e ) {
 
-    inputUser.onkeydown = ( e ) => {
-        if ( e.key === "." || e.key === "," ) {
-            alert( "No commas or dots allowed!" );
-            return false;
-        }
-    };
-
-    checkBoxState.onclick = () => {
-        if ( checkBoxState.checked === true ) {
-            console.log( "Согласен!" );
-        }
-        else {
-            console.log( "Не согласен!" );
-        }
-    };
-
-
-    form.addEventListener( "submit", function ( e ) {
         e.preventDefault();
         e.stopPropagation();
-        if ( !e.target[0].value ) {
-            alert( "Заполните поле Full Name" );
+        for ( let item of errorMsg ) {
+            item.style.display = "none";
         }
-        else if ( e.target[1].value.length < 1 ) {
-            alert( "Заполните поле Your Username" );
+
+        for ( let item of formMain ) {
+            item.style.borderColor = "revert";
         }
-        else if ( e.target[2].value.length < 1 ) {
-            alert( "Заполните поле E-mail" );
+        if ( !e.target[0].value.match( /^[А-ЯA-Z][А-яa-z]+\s*$/ ) ) {
+            this[0].nextElementSibling.style.display = "block";
+
+            Object.assign( this[0].style, inputStyles );
+
         }
-        else if ( e.target[3].value.length < 8 ) {
-            alert( "Введите пароль не менее 8 символов " );
+        else if ( !e.target[1].value.match( /^[A-Za-z0-9-_]+\s*$/ ) ) {
+            this[1].nextElementSibling.style.display = "block";
+
+            Object.assign( this[1].style, inputStyles );
+        }
+        else if ( !e.target[2].value.match( /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ) ) {
+            this[2].nextElementSibling.style.display = "block";
+
+            Object.assign( this[2].style, inputStyles );
+        }
+        else if ( !e.target[3].value.match( /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?^])[A-Za-z\d#$@!%&*?^]{8,16}$/ ) ) {
+            this[3].nextElementSibling.style.display = "block";
+
+            Object.assign( this[3].style, inputStyles );
         }
         else if ( e.target[4].value !== e.target[3].value ) {
-            alert( "Пароли не совпадают" );
+            this[4].nextElementSibling.style.display = "block";
+
+            Object.assign( this[4].style, inputStyles );
         }
-        else if ( e.target[5].checked === false ) {
-            alert( "Вы не поставили галочку в поле согласие на обработку персональных данных " );
+        else if ( this[5].checked == false ) {
+            document.querySelector( ".checkbox-error" ).style.display = "block";
         }
         else {
             modal.style.display = "flex";
@@ -80,14 +77,14 @@ window.onload = () => {
 
     function welcome() {
         signUpBtn.onclick = () => {
-            if ( form[1].value.length < 1 ) {
+            if ( formMain[1].value.length < 1 ) {
                 alert( "Заполните поле Your Username" );
             }
-            else if ( form[3].value.length < 1 ) {
+            else if ( formMain[3].value.length < 1 ) {
                 alert( "Заполните пароль" );
             }
             else {
-                alert( "Добро пожаловать, " + form[1].value + "!" );
+                alert( "Добро пожаловать, " + formMain[1].value + "!" );
                 window.location.reload();
             }
         };
@@ -96,19 +93,19 @@ window.onload = () => {
     function logIn() {
         modal.style.display = "none";
         document.querySelector( ".main__h1 " ).innerHTML = "Log in to the system";
-        form[0].style.display = "none";
+        formMain[0].style.display = "none";
         labels[0].style.display = "none";
-        form[2].style.display = "none";
+        formMain[2].style.display = "none";
         labels[2].style.display = "none";
-        form[4].style.display = "none";
+        formMain[4].style.display = "none";
         labels[4].style.display = "none";
-        form[5].style.display = "none";
+        formMain[5].style.display = "none";
         labels[5].style.display = "none";
         signUpBtn.innerText = "Sign In";
         signUpBtn.type = "button";
         account.style.display = "none";
         bodyBehindModal.style.overflow = "revert";
-        welcome();
+        // welcome()
     }
 
 
