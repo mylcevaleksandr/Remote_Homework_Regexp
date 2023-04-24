@@ -1,13 +1,7 @@
 window.onload = () => {
     let bodyBehindModal = document.querySelector( "body" );
 
-    let inputFull = document.getElementById( "full-name" );
-
-    let inputUser = document.getElementById( "user-name" );
-
-    let checkBoxState = document.getElementById( "agree" );
-
-    let form = document.getElementById( "main__form" );
+    let formMain = document.getElementById( "main__form" );
 
     let labels = document.getElementsByTagName( "label" );
 
@@ -19,56 +13,29 @@ window.onload = () => {
 
     let signUpBtn = document.querySelector( ".main__btn" );
 
-    inputFull.onkeydown = ( e ) => {
-        if ( !isNaN( parseInt( e.key ) ) ) {
-            alert( "You may not enter numbers in this field!" );
-            return false;
-        }
+    let errorMsg = document.getElementsByClassName( "error-message" );
+
+    let formUsername = formMain[1].nextElementSibling;
+
+    let formPassword = formMain[3].nextElementSibling;
+
+    let formHeader = document.querySelector( ".main__h1 " );
+
+    let registeredUser = "";
+
+    let registeredPassword = "";
+
+    let inputStyles = {
+        "border-color": "red",
+        "border-width": "1px",
+        "border-style": "solid"
     };
 
-    inputUser.onkeydown = ( e ) => {
-        if ( e.key === "." || e.key === "," ) {
-            alert( "No commas or dots allowed!" );
-            return false;
-        }
+    let authentificationStyle = {
+        "border-width": "0",
+        "borderBottomWidth": "1px",
+        "borderColor": "green"
     };
-
-    checkBoxState.onclick = () => {
-        if ( checkBoxState.checked === true ) {
-            console.log( "Согласен!" );
-        }
-        else {
-            console.log( "Не согласен!" );
-        }
-    };
-
-
-    form.addEventListener( "submit", function ( e ) {
-        e.preventDefault();
-        e.stopPropagation();
-        if ( e.target[0].value.length < 1 ) {
-            alert( "Заполните поле Full Name" );
-        }
-        else if ( e.target[1].value.length < 1 ) {
-            alert( "Заполните поле Your Username" );
-        }
-        else if ( e.target[2].value.length < 1 ) {
-            alert( "Заполните поле E-mail" );
-        }
-        else if ( e.target[3].value.length < 8 ) {
-            alert( "Введите пароль не менее 8 символов " );
-        }
-        else if ( e.target[4].value !== e.target[3].value ) {
-            alert( "Пароли не совпадают" );
-        }
-        else if ( e.target[5].checked === false ) {
-            alert( "Вы не поставили галочку в поле согласие на обработку персональных данных " );
-        }
-        else {
-            modal.style.display = "flex";
-            bodyBehindModal.style.overflow = "hidden";
-        }
-    } );
 
     popUpBtn.onclick = () => {
         logIn();
@@ -78,39 +45,181 @@ window.onload = () => {
         logIn();
     };
 
+    formMain.addEventListener( "submit", function ( e ) {
+
+        e.preventDefault();
+        e.stopPropagation();
+        for ( let item of errorMsg ) {
+            item.style.display = "none";
+        }
+
+        for ( let item of formMain ) {
+            item.style = "revert";
+        }
+        if ( !e.target[0].value.match( /^[А-ЯA-Z][А-яa-z]+\s*$/ ) ) {
+            this[0].nextElementSibling.style.display = "block";
+            Object.assign( this[0].style, inputStyles );
+        }
+        else if ( !e.target[1].value.match( /^[A-Za-z0-9-_]+\s*$/ ) ) {
+            this[1].nextElementSibling.style.display = "block";
+            Object.assign( this[1].style, inputStyles );
+        }
+        else if ( !e.target[2].value.match( /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ ) ) {
+            this[2].nextElementSibling.style.display = "block";
+            Object.assign( this[2].style, inputStyles );
+        }
+        else if ( !e.target[3].value.match( /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#$@!%&*?^])[A-Za-z\d#$@!%&*?^]{8,16}$/ ) ) {
+            this[3].nextElementSibling.style.display = "block";
+            Object.assign( this[3].style, inputStyles );
+        }
+        else if ( e.target[4].value !== e.target[3].value ) {
+            this[4].nextElementSibling.style.display = "block";
+            Object.assign( this[4].style, inputStyles );
+        }
+        else if ( this[5].checked === false ) {
+            document.querySelector( ".checkbox-error" ).style.display = "block";
+        }
+        else {
+            modal.style.display = "flex";
+            bodyBehindModal.style.overflow = "hidden";
+            clientObjectCreator( e.target );
+            welcome();
+        }
+    } );
+
+    function clientObjectCreator( target ) {
+        let clientObj = {};
+        clientObj.name = target[0].value;
+        clientObj.username = target[1].value;
+        clientObj.email = target[2].value;
+        clientObj.password = target[4].value;
+        setLocalStorage( clientObj );
+    }
+
+    function setLocalStorage( client, ) {
+        let clients = localStorage.getItem( "clients" );
+        let userArray = [];
+        if ( clients ) {
+            userArray = JSON.parse( clients );
+            userArray.push( client );
+            localStorage.setItem( "clients", JSON.stringify( userArray ) );
+        }
+        else {
+            userArray.push( client );
+            localStorage.setItem( "clients", JSON.stringify( userArray ) );
+        }
+        console.log( userArray );
+    }
+
     function welcome() {
+        let userName = "";
+        let userN = "";
+        let userP = "";
+
+        account.innerHTML = "Registration";
+
+        account.onclick = () => {
+            window.location.reload();
+        };
+
         signUpBtn.onclick = () => {
-            if ( form[1].value.length < 1 ) {
-                alert( "Заполните поле Your Username" );
+            userN = formMain[1].value;
+            userP = formMain[3].value;
+
+            for ( let item of errorMsg ) {
+                item.style.display = "none";
             }
-            else if ( form[3].value.length < 1 ) {
-                alert( "Заполните пароль" );
+
+            for ( let item of formMain ) {
+                item.style.borderColor = "green";
             }
-            else {
-                alert( "Добро пожаловать, " + form[1].value + "!" );
-                window.location.reload();
+            if ( !userN ) {
+                formUsername.style.display = "block";
+                Object.assign( formMain[1].style, inputStyles );
+            }
+            if ( !userP ) {
+                formPassword.innerHTML = "Введите свой пароль!";
+                formPassword.style.display = "block";
+                Object.assign( formMain[3].style, inputStyles );
+            }
+            if ( userN && userP ) {
+                userName = search( userN, userP );
+
+                authentification( userN, userP, userName );
+
             }
         };
     }
 
+    function search( username, password ) {
+
+        let clients = localStorage.getItem( "clients" );
+
+        let testArray = JSON.parse( clients );
+
+        registeredPassword = "";
+        registeredUser = "";
+
+        for ( let i = 0; i < testArray.length; i++ ) {
+            if ( testArray[i].username === username ) {
+                registeredUser = testArray[i].username;
+
+            }
+            if ( testArray[i].username === username && testArray[i].password === password ) {
+                registeredPassword = testArray[i].password;
+                return testArray[i];
+            }
+        }
+    }
+
+    function authentification( username, password, user ) {
+        formUsername.style.display = "none";
+        formPassword.style.display = "none";
+
+        if ( !registeredUser ) {
+            Object.assign( formMain[1].style, inputStyles );
+
+            formMain[1].style.borderColor = "red";
+            formUsername.innerHTML = "Такой пользователь не зарегистрирован";
+            formUsername.style.display = "block";
+        }
+        else if ( !registeredPassword ) {
+            Object.assign( formMain[3].style, authentificationStyle );
+            formMain[3].style.borderColor = "red";
+            formPassword.innerHTML = "Неверный пароль";
+            formPassword.style.display = "block";
+        }
+        else {
+            formHeader.innerHTML = "Welcome " + user.name + "!";
+            document.querySelector( ".main__h3" ).style.display = "none";
+            account.style.display = "none";
+            formMain[1].style.display = "none";
+            formMain[3].style.display = "none";
+            labels[1].style.display = "none";
+            labels[3].style.display = "none";
+            signUpBtn.innerText = "Exit";
+            signUpBtn.onclick = () => {
+                window.location.reload();
+            };
+        }
+    }
+
     function logIn() {
         modal.style.display = "none";
-        document.querySelector( ".main__h1 " ).innerHTML = "Log in to the system";
-        form[0].style.display = "none";
+        formHeader.innerHTML = "Log in to the system";
+        formMain[0].style.display = "none";
         labels[0].style.display = "none";
-        form[2].style.display = "none";
+        formMain[2].style.display = "none";
         labels[2].style.display = "none";
-        form[4].style.display = "none";
+        formMain[4].style.display = "none";
         labels[4].style.display = "none";
-        form[5].style.display = "none";
+        formMain[5].style.display = "none";
         labels[5].style.display = "none";
         signUpBtn.innerText = "Sign In";
         signUpBtn.type = "button";
-        account.style.display = "none";
         bodyBehindModal.style.overflow = "revert";
         welcome();
     }
-    
 };
    
  
